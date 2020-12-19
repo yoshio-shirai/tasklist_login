@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :new, :edit]
+  before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
   
   def index
-    @tasks = Task.all
+    #@tasks = Task.all
+    @tasks = current_user.tasks
   end
   
   def show
@@ -21,7 +22,6 @@ class TasksController < ApplicationController
       flash[:success] = 'タスクを投稿しました。'
       redirect_to root_url
     else
-      @tasks = current_user.tasks.order(id: :desc)
       flash.now[:danger] = 'タスクの投稿に失敗しました。'
       render new_task_path
     end
