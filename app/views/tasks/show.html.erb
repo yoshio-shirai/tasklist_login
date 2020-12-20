@@ -15,10 +15,9 @@
   </tr>
 </table>
 
-<% if current_user == @task.user %>
-  <%= link_to 'このタスクを編集する', edit_task_path(@task), class: 'btn btn-light' %>
-  <%= link_to 'このタスクを削除する', @task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
- <% end %>
+<%= link_to 'このタスクを編集する', edit_task_path(@task), class: 'btn btn-light' %>
+<%= link_to 'このタスクを削除する', @task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+ 
 <%= link_to '一覧画面へ', tasks_path(@task), class: 'btn btn-light' %>
 
 <!--
